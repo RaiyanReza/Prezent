@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"> <!-- this line shows the preview on the right handside-->
+
+
+
+
+
+    <!-- this will stay selected when we choose them -->
+    <!-- <group android:checkableBehavior="single">
+           <item android:id="@+id/nav_addPicture"
+               android:icon="@drawable/ic_add_a_photo_black_24dp"
+               android:title="Add Photo"/>
+           <item android:id="@+id/nav_addReminder"
+               android:icon="@drawable/ic_add_reminder"
+               android:title="Add Reminder"/>
+       </group>
+       -->
+
+    <!-- this will trigger an action an not stay selected, it wil also have a vertical line . clr + alt + l "rearrange the attributes " random commit  -->
+
+
+    <item android:title="User1">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_home"
+                android:title="Home"
+                android:icon="@drawable/ic_home_black_24dp"
+
+
+                />
+
+            <item
+                android:id="@+id/nav_addReminder"
+                android:icon="@drawable/ic_add_reminder"
+                android:title="Add Reminder" />
+          <!--  <item
+                android:id="@+id/nav_addPicture"
+                android:icon="@drawable/ic_add_a_photo_black_24dp"
+                android:title="Add Photo" />-->
+
+            <item
+                android:id="@+id/nav_timeTable"
+                android:icon="@drawable/ic_school_black_24dp"
+                android:title="Time Table" />
+
+
+
+
+        </menu>
+
+    </item>
+
+</menu>
