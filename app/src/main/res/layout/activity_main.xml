@@ -44,6 +44,4 @@
     <!--*app:headerLayout* will place the header in out nav drawer -->
     <!-- *elevation* will add shadow beloe action bar will only work with api21 or higher ignore lower -->
     <!--will make the text white of the toolbar, remove "Dark" to get black text -->
-
-
 </android.support.v4.widget.DrawerLayout>

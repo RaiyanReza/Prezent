@@ -3,6 +3,7 @@ package com.company.prezent;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.WallpaperManager;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -35,9 +36,9 @@ public class ReminderFrag extends Fragment {
     private ArrayAdapter<String> adapter; //To display our ArrayList into ListView
     private ListView ilist;
     Calendar cal = Calendar.getInstance();
-    final int year = cal.get(Calendar.YEAR);
-    final int month = cal.get(Calendar.MONTH);
-    final int day = cal.get(Calendar.DAY_OF_MONTH);
+    int year = cal.get(Calendar.YEAR);
+    int month = cal.get(Calendar.MONTH);
+    int day = cal.get(Calendar.DAY_OF_MONTH);
     int hour = cal.get(Calendar.HOUR_OF_DAY);
     DatePickerDialog dp;
     @Nullable
@@ -49,6 +50,11 @@ public class ReminderFrag extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         ilist = (ListView)getView().findViewById(R.id.itemlist);
         list = new ArrayList<String>();
         read(); //Fill ArrayList with whatever previous reminder added
@@ -139,9 +145,12 @@ public class ReminderFrag extends Fragment {
                     etext.setText(""); //Reset Input text for new input
                     ttext.setText("");
                     write();
+                }else if((ttext.getText().toString().equals(""))){
+                    Toast.makeText(getActivity(), "Pick a Date", Toast.LENGTH_LONG).show();
                 }//Update txt file
             }
         });
+
     }
 
     private void ListViewListener(){

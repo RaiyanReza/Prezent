@@ -1,5 +1,6 @@
 package com.company.prezent;
 
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,7 +9,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
+
 
 
 import java.util.Calendar;
@@ -19,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Calendar cal = Calendar.getInstance();
     int time = cal.get(Calendar.HOUR_OF_DAY);
 
+    int checkDay = cal.get(Calendar.DAY_OF_MONTH);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +47,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (savedInstanceState == null ){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFrag()).commit();
-            navigationView.setCheckedItem(R.id.nav_home);} //this allows to start the home activity imediately before we click any item
+            navigationView.setCheckedItem(R.id.nav_home);
+        } //this allows to start the home activity imediately before we click any item
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cal = Calendar.getInstance();
+        time = cal.get(Calendar.HOUR_OF_DAY);
         switch (time){
             case 1: case 2: case 3: case 4: case 18: case 19: case 20: case 21: case 22: case 23: case 0:
                 Toast.makeText(this, "Good Evening", Toast.LENGTH_SHORT).show();

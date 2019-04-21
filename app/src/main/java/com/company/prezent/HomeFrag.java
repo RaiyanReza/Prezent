@@ -32,17 +32,8 @@ public class HomeFrag extends Fragment {
     Calendar cal = Calendar.getInstance();
     int day = cal.get(Calendar.DAY_OF_MONTH);
     int hour = cal.get(Calendar.HOUR_OF_DAY);
-
-    ArrayList<String> list;
-
-/*    @Override
-    public void onResume() {
-        super.onResume();
-        switch (day) {
-            case 0:
-                break;
-        }
-    }*/
+    String[] strlist;
+    TextView reading;
 
     @Nullable
     @Override
@@ -53,9 +44,30 @@ public class HomeFrag extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) { // for  contents of frags
         super.onActivityCreated(savedInstanceState);
+
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        cal = Calendar.getInstance();
         Resources res = getResources();
         String[] strlist = res.getStringArray(R.array.quotes);
         TextView reading = (TextView) getActivity().findViewById(R.id.quotes_textView);
+        hour = cal.get(Calendar.HOUR_OF_DAY);
+        day = cal.get(Calendar.DAY_OF_MONTH);
+        switch (day) {
+            case 1:
+                reading.setText(strlist[0]);
+                break;
+
+
+            case 2:
+                reading.setText(strlist[1]);
+                break;
+
+            default:
+                break;
+        }
         switch (hour){
             case 1: case 2: case 3: case 4: case 18: case 19: case 20: case 21: case 22: case 23: case 0:
                 reading.setTextColor(Color.WHITE);
@@ -82,15 +94,9 @@ public class HomeFrag extends Fragment {
             default:
                 break;
 
-
         }
-
-
-
-
     }
-
-//    private void read() {
+    //    private void read() {
 //        String line;
 //        String line2;
 //        try {
