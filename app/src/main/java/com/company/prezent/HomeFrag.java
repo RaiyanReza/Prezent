@@ -1,6 +1,7 @@
 package com.company.prezent;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ public class HomeFrag extends Fragment {
 
     Calendar cal = Calendar.getInstance();
     int day = cal.get(Calendar.DAY_OF_MONTH);
+    int hour = cal.get(Calendar.HOUR_OF_DAY);
 
     ArrayList<String> list;
 
@@ -53,6 +56,19 @@ public class HomeFrag extends Fragment {
         Resources res = getResources();
         String[] strlist = res.getStringArray(R.array.quotes);
         TextView reading = (TextView) getActivity().findViewById(R.id.quotes_textView);
+        switch (hour){
+            case 1: case 2: case 3: case 4: case 18: case 19: case 20: case 21: case 22: case 23: case 0:
+                reading.setTextColor(Color.WHITE);
+                break;
+            case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12:
+                reading.setTextColor(Color.BLACK);
+                break;
+            case 13: case 14: case 15: case 16: case 17:
+                reading.setTextColor(Color.BLACK);
+                break;
+            default:
+                break;
+        }
         switch (day) {
             case 1:
                 reading.setText(strlist[0]);
@@ -64,7 +80,6 @@ public class HomeFrag extends Fragment {
                 break;
 
             default:
-                Toast.makeText(getActivity(), "Failedgit ", Toast.LENGTH_SHORT).show();
                 break;
 
 
